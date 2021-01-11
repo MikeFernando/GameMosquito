@@ -9,14 +9,11 @@ var criaMosquitoTempo = 1500
 var nivel = window.location.search
 nivel = nivel.replace('?', '')
 
-if(nivel === 'normal') {
-	//1500
+if (nivel === 'normal') {
 	criaMosquitoTempo = 1500
-} else if(nivel === 'dificil') {
-	//1000
+} else if (nivel === 'dificil') {
 	criaMosquitoTempo = 1000
 } else if (nivel === 'chucknorris') {
-	//750
 	criaMosquitoTempo = 750
 }
 
@@ -29,18 +26,18 @@ function ajustaTamanhoPalcoJogo() {
 
 ajustaTamanhoPalcoJogo()
 
-var cronometro = setInterval(function() {
+var cronometro = setInterval(function () {
 
 	tempo -= 1
 
-	if(tempo < 0) {
+	if (tempo < 0) {
 		clearInterval(cronometro)
 		clearInterval(criaMosca)
 		window.location.href = 'vitoria.html'
 	} else {
 		document.getElementById('cronometro').innerHTML = tempo
 	}
-	
+
 }, 1000)
 
 
@@ -48,11 +45,11 @@ function posicaoRandomica() {
 
 
 	//remover o mosquito anterior (caso exista)
-	if(document.getElementById('mosquito')) {
+	if (document.getElementById('mosquito')) {
 		document.getElementById('mosquito').remove()
 
 		//console.log('elemento selecionado foi: v' + vidas)
-		if(vidas > 3) {
+		if (vidas > 3) {
 
 			window.location.href = 'fim_de_jogo.html'
 		} else {
@@ -78,7 +75,7 @@ function posicaoRandomica() {
 	mosquito.style.top = posicaoY + 'px'
 	mosquito.style.position = 'absolute'
 	mosquito.id = 'mosquito'
-	mosquito.onclick = function() {
+	mosquito.onclick = function () {
 		this.remove()
 	}
 
@@ -88,11 +85,11 @@ function posicaoRandomica() {
 
 function tamanhoAleatorio() {
 	var classe = Math.floor(Math.random() * 3)
-	
-	switch(classe) {
+
+	switch (classe) {
 		case 0:
 			return 'mosquito1'
-		
+
 		case 1:
 			return 'mosquito2'
 
@@ -103,11 +100,11 @@ function tamanhoAleatorio() {
 
 function ladoAleatorio() {
 	var classe = Math.floor(Math.random() * 2)
-	
-	switch(classe) {
+
+	switch (classe) {
 		case 0:
 			return 'ladoA'
-		
+
 		case 1:
 			return 'ladoB'
 
